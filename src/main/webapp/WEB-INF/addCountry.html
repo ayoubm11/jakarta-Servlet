@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Pays</title>
+    <style>
+        /* Styles CSS pour améliorer l'apparence de la page */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        form {
+            margin-top: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ajouter un Nouveau Pays</h1>
+        
+        <!-- Lien de déconnexion -->
+        <p style="text-align: right; margin-bottom: 20px;">
+            <a href="logout" style="color: #dc3545; text-decoration: none;">
+                 Se déconnecter
+            </a>
+        </p>
+        
+        <!-- 
+            Formulaire HTML pour ajouter un pays
+            
+            action="addCountry" : URL vers laquelle les données seront envoyées
+                                  (correspond au @WebServlet dans CountryServlet)
+            
+            method="POST" : Méthode HTTP utilisée
+                           POST est préféré pour les formulaires qui modifient des données
+                           Les données ne sont pas visibles dans l'URL (plus sécurisé)
+        -->
+        <form action="addCountry" method="POST">
+            <!-- 
+                Label pour le champ de saisie
+                L'attribut 'for' lie le label au champ avec l'id correspondant
+            -->
+            <label for="countryName">Nom du pays :</label>
+            
+            <!-- 
+                Champ de saisie de texte
+                
+                type="text" : Type du champ (texte simple)
+                id="countryName" : Identifiant unique pour le label
+                name="countryName" : IMPORTANT - C'est ce nom qui sera utilisé dans
+                                     request.getParameter("countryName") dans la servlet
+                required : Attribut HTML5 qui rend le champ obligatoire
+                          Le navigateur empêchera la soumission si le champ est vide
+                placeholder : Texte d'aide affiché dans le champ vide
+            -->
+            <input 
+                type="text" 
+                id="countryName" 
+                name="countryName" 
+                required 
+                placeholder="Ex: France, Maroc, Canada..."
+            >
+            
+            <!-- 
+                Bouton de soumission
+                type="submit" : Déclenche l'envoi du formulaire vers l'URL définie dans 'action'
+            -->
+            <button type="submit">Ajouter le pays</button>
+        </form>
+        
+        <!-- Lien pour retourner à la liste des pays -->
+        <a href="countries" class="back-link">← Retour à la liste des pays</a>
+    </div>
+</body>
+</html>
