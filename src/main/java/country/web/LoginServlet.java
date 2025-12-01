@@ -11,7 +11,9 @@ import country.dao.User;
 
 import java.io.IOException;
 
-@WenServlet("/login")
+@WebServlet("/login")
+
+
 public class LoginServlet extends HttpServlet{
 	
 	@Override
